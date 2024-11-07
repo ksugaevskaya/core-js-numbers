@@ -200,8 +200,11 @@ function roundToPowerOfTen(num, pow) {
  *   16 => false
  *   17 => true
  */
-function isPrime(/* n */) {
-  throw new Error('Not implemented');
+function isPrime(n) {
+  for (let i = 2; i < n; i += 1) {
+    if (n % i === 0) return false;
+  }
+  return true;
 }
 
 /**
@@ -219,8 +222,12 @@ function isPrime(/* n */) {
  *   toNumber(42, 0) => 42
  *   toNumber(new Number(42), 0) => 42
  */
-function toNumber(/* value, def */) {
-  throw new Error('Not implemented');
+function toNumber(value, def) {
+  const num = Number(value);
+  if (Number.isNaN(num)) {
+    return def;
+  }
+  return num;
 }
 
 /**
@@ -251,8 +258,16 @@ function getCube(num) {
  *   3  => 2
  *   10 => 55
  */
-function getFibonacciNumber(/* index */) {
-  throw new Error('Not implemented');
+function getFibonacciNumber(index) {
+  let position0 = 0;
+  let position1 = 1;
+  let sum = 0;
+  for (let i = 0; i < index; i += 1) {
+    sum = position0 + position1;
+    position0 = position1;
+    position1 = sum;
+  }
+  return position0;
 }
 
 /**
@@ -617,8 +632,14 @@ function getHypotenuse(a, b) {
  * 10 => 5
  * 15 => 8
  */
-function getCountOfOddNumbers(/* number */) {
-  throw new Error('Not implemented');
+function getCountOfOddNumbers(number) {
+  let numberOdd = 0;
+  for (let i = 0; i <= Math.abs(number); i += 1) {
+    if (i % 2 !== 0) {
+      numberOdd += 1;
+    }
+  }
+  return numberOdd;
 }
 
 module.exports = {
